@@ -6,13 +6,19 @@ package com.yanbin.tddhomework2.shoppingcart;
 public class Book {
 
     private String bookName;
+    private int price;
 
-    public Book(String bookName){
+    public Book(String bookName, int price){
         this.bookName = bookName;
+        this.price = price;
     }
 
     public String getBookName() {
         return bookName;
+    }
+
+    public int getPrice() {
+        return price;
     }
 
     @Override
@@ -22,12 +28,15 @@ public class Book {
 
         Book book = (Book) o;
 
+        if (price != book.price) return false;
         return bookName.equals(book.bookName);
 
     }
 
     @Override
     public int hashCode() {
-        return bookName.hashCode();
+        int result = bookName.hashCode();
+        result = 31 * result + price;
+        return result;
     }
 }

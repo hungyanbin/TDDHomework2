@@ -65,15 +65,15 @@ public class ShoppingCartTest {
     }
 
     private Book getHarryPotter1(){
-        return new Book("Harry Potter and the Philosopher's Stone");
+        return new Book("Harry Potter and the Philosopher's Stone", 100);
     }
 
     private Book getHarryPotter2(){
-        return new Book("Harry Potter and the Chamber of Secrets");
+        return new Book("Harry Potter and the Chamber of Secrets", 100);
     }
 
     private Book getHarryPotter3(){
-        return new Book("Harry Potter and the Prisoner of Azkaban");
+        return new Book("Harry Potter and the Prisoner of Azkaban", 100);
     }
 
 }

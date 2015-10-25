@@ -8,9 +8,6 @@ import java.util.Map;
 public class ShoppingCart {
 
     private Map<Book, Integer> bookBuckets = new HashMap<>();
-    private int totalBookCount = 0;
-
-    private static final int BOOK_PRICE = 100;
 
     public void order(Book book){
         if(bookBuckets.containsKey(book)){
@@ -18,13 +15,12 @@ public class ShoppingCart {
             bookBuckets.put(book, bookCount + 1);
         }else
             bookBuckets.put(book, 1);
-        totalBookCount++;
     }
 
     public int getSubtotal(){
         int bookBucketCount = bookBuckets.size();
 
-        return totalBookCount * (int)(BOOK_PRICE * getDiscountByBucketCount(bookBucketCount));
+        return (int)(getTotalBookPrice() * getDiscountByBucketCount(bookBucketCount));
     }
 
     private float getDiscountByBucketCount(int bucketCount){
@@ -34,5 +30,18 @@ public class ShoppingCart {
         priceTable.append(3, 0.9f);
 
         return priceTable.get(bucketCount);
+    }
+
+    private int getTotalBookPrice(){
+        int sum = 0;
+        for(Map.Entry<Book, Integer> bookBucket : bookBuckets.entrySet()){
+            Book book = bookBucket.getKey();
+            int count = bookBucket.getValue();
+            int bookPrice = book.getPrice();
+
+            sum += bookPrice * count;
+        }
+
+        return sum;
     }
 }
