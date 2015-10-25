@@ -43,7 +43,7 @@ public class ShoppingCartTest {
         target.order(harryPotter2);
 
         //assert
-        //Assert.assertEquals(expectSubtotal, target.getSubtotal());
+        Assert.assertEquals(expectSubtotal, target.getSubtotal());
     }
 
 }

@@ -14,4 +14,20 @@ public class Book {
     public String getBookName() {
         return bookName;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Book book = (Book) o;
+
+        return bookName.equals(book.bookName);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return bookName.hashCode();
+    }
 }
