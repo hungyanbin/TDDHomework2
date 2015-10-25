@@ -17,7 +17,7 @@ import org.robolectric.annotation.Config;
 public class ShoppingCartTest {
 
     @Test
-    public void order_1_book_subtotals_should_cost_100(){
+    public void order_1_book_subtotals_should_be_100(){
         //arrange
         ShoppingCart target = new ShoppingCart();
         Book harryPotter1 = new Book("Harry Potter and the Philosopher's Stone");
@@ -25,6 +25,22 @@ public class ShoppingCartTest {
 
         //act
         target.order(harryPotter1);
+
+        //assert
+        Assert.assertEquals(expectSubtotal, target.getSubtotal());
+    }
+
+    @Test
+    public void order_2_different_books_subtotals_should_be_190(){
+        //arrange
+        ShoppingCart target = new ShoppingCart();
+        Book harryPotter1 = new Book("Harry Potter and the Philosopher's Stone");
+        Book harryPotter2 = new Book("Harry Potter and the Chamber of Secrets");
+        int expectSubtotal = 190;
+
+        //act
+        target.order(harryPotter1);
+        target.order(harryPotter2);
 
         //assert
         Assert.assertEquals(expectSubtotal, target.getSubtotal());
