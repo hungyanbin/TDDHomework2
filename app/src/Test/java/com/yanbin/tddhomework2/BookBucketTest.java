@@ -1,6 +1,7 @@
 package com.yanbin.tddhomework2;
 
 import com.yanbin.tddhomework2.shoppingcart.Book;
+import com.yanbin.tddhomework2.shoppingcart.BookBucket;
 import com.yanbin.tddhomework2.shoppingcart.ShoppingCart;
 
 import org.junit.Assert;
@@ -14,36 +15,33 @@ import org.robolectric.annotation.Config;
  */
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(manifest = "app/src/main/AndroidManifest.xml", constants = BuildConfig.class, sdk = 21)
-public class ShoppingCartTest {
+public class BookBucketTest {
 
     @Test
-    public void order_1_book_subtotals_should_be_100(){
+    public void init_bookBucket_bookCount_should_be_1(){
         //arrange
-        ShoppingCart target = new ShoppingCart();
+        int expectBookCount = 1;
         Book harryPotter1 = new Book("Harry Potter and the Philosopher's Stone");
-        int expectSubtotal = 100;
 
         //act
-        target.order(harryPotter1);
+        BookBucket target = new BookBucket(harryPotter1);
 
         //assert
-        Assert.assertEquals(expectSubtotal, target.getSubtotal());
+        Assert.assertEquals(expectBookCount, target.getBookCount());
     }
 
     @Test
-    public void order_2_different_books_subtotals_should_be_190(){
+    public void addBook_2_times_bookCount_should_be_3(){
         //arrange
-        ShoppingCart target = new ShoppingCart();
+        int expectBookCount = 3;
         Book harryPotter1 = new Book("Harry Potter and the Philosopher's Stone");
-        Book harryPotter2 = new Book("Harry Potter and the Chamber of Secrets");
-        int expectSubtotal = 190;
 
         //act
-        target.order(harryPotter1);
-        target.order(harryPotter2);
+        BookBucket target = new BookBucket(harryPotter1);
+        target.addBook();
+        target.addBook();
 
         //assert
-        //Assert.assertEquals(expectSubtotal, target.getSubtotal());
+        Assert.assertEquals(expectBookCount, target.getBookCount());
     }
-
 }
