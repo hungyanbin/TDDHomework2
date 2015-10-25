@@ -28,6 +28,8 @@ public class ShoppingCart {
         priceTable.append(1, 1f);
         priceTable.append(2, 0.95f);
         priceTable.append(3, 0.9f);
+        priceTable.append(4, 0.8f);
+        priceTable.append(5, 0.75f);
 
         return priceTable.get(bucketCount);
     }

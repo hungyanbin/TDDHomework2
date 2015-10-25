@@ -64,6 +64,48 @@ public class ShoppingCartTest {
         Assert.assertEquals(expectSubtotal, target.getSubtotal());
     }
 
+    @Test
+    public void order_4_different_books_subtotals_should_be_320(){
+        //arrange
+        ShoppingCart target = new ShoppingCart();
+        Book harryPotter1 = getHarryPotter1();
+        Book harryPotter2 = getHarryPotter2();
+        Book harryPotter3 = getHarryPotter3();
+        Book harryPotter4 = getHarryPotter4();
+        int expectSubtotal = 320;
+
+        //act
+        target.order(harryPotter1);
+        target.order(harryPotter2);
+        target.order(harryPotter3);
+        target.order(harryPotter4);
+
+        //assert
+        Assert.assertEquals(expectSubtotal, target.getSubtotal());
+    }
+
+    @Test
+    public void order_5_different_books_subtotals_should_be_375(){
+        //arrange
+        ShoppingCart target = new ShoppingCart();
+        Book harryPotter1 = getHarryPotter1();
+        Book harryPotter2 = getHarryPotter2();
+        Book harryPotter3 = getHarryPotter3();
+        Book harryPotter4 = getHarryPotter4();
+        Book harryPotter5 = getHarryPotter5();
+        int expectSubtotal = 375;
+
+        //act
+        target.order(harryPotter1);
+        target.order(harryPotter2);
+        target.order(harryPotter3);
+        target.order(harryPotter4);
+        target.order(harryPotter5);
+
+        //assert
+        Assert.assertEquals(expectSubtotal, target.getSubtotal());
+    }
+
     private Book getHarryPotter1(){
         return new Book("Harry Potter and the Philosopher's Stone", 100);
     }
@@ -74,6 +116,14 @@ public class ShoppingCartTest {
 
     private Book getHarryPotter3(){
         return new Book("Harry Potter and the Prisoner of Azkaban", 100);
+    }
+
+    private Book getHarryPotter4(){
+        return new Book("Harry Potter and the Goblet of Fire", 100);
+    }
+
+    private Book getHarryPotter5(){
+        return new Book("Harry Potter and the Order of the Phoenix", 100);
     }
 
 }
