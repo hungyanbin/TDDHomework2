@@ -20,11 +20,10 @@ public class ShoppingCartTest {
     public void order_1_book_subtotals_should_be_100(){
         //arrange
         ShoppingCart target = new ShoppingCart();
-        Book harryPotter1 = getHarryPotter1();
         int expectSubtotal = 100;
 
         //act
-        target.order(harryPotter1);
+        target.order(getHarryPotter1());
 
         //assert
         Assert.assertEquals(expectSubtotal, target.getSubtotal());
@@ -34,13 +33,11 @@ public class ShoppingCartTest {
     public void order_2_different_books_subtotals_should_be_190(){
         //arrange
         ShoppingCart target = new ShoppingCart();
-        Book harryPotter1 = getHarryPotter1();
-        Book harryPotter2 = getHarryPotter2();
         int expectSubtotal = 190;
 
         //act
-        target.order(harryPotter1);
-        target.order(harryPotter2);
+        target.order(getHarryPotter1());
+        target.order(getHarryPotter2());
 
         //assert
         Assert.assertEquals(expectSubtotal, target.getSubtotal());
@@ -50,15 +47,12 @@ public class ShoppingCartTest {
     public void order_3_different_books_subtotals_should_be_270(){
         //arrange
         ShoppingCart target = new ShoppingCart();
-        Book harryPotter1 = getHarryPotter1();
-        Book harryPotter2 = getHarryPotter2();
-        Book harryPotter3 = getHarryPotter3();
         int expectSubtotal = 270;
 
         //act
-        target.order(harryPotter1);
-        target.order(harryPotter2);
-        target.order(harryPotter3);
+        target.order(getHarryPotter1());
+        target.order(getHarryPotter2());
+        target.order(getHarryPotter3());
 
         //assert
         Assert.assertEquals(expectSubtotal, target.getSubtotal());
@@ -68,17 +62,13 @@ public class ShoppingCartTest {
     public void order_4_different_books_subtotals_should_be_320(){
         //arrange
         ShoppingCart target = new ShoppingCart();
-        Book harryPotter1 = getHarryPotter1();
-        Book harryPotter2 = getHarryPotter2();
-        Book harryPotter3 = getHarryPotter3();
-        Book harryPotter4 = getHarryPotter4();
         int expectSubtotal = 320;
 
         //act
-        target.order(harryPotter1);
-        target.order(harryPotter2);
-        target.order(harryPotter3);
-        target.order(harryPotter4);
+        target.order(getHarryPotter1());
+        target.order(getHarryPotter2());
+        target.order(getHarryPotter3());
+        target.order(getHarryPotter4());
 
         //assert
         Assert.assertEquals(expectSubtotal, target.getSubtotal());
@@ -88,19 +78,30 @@ public class ShoppingCartTest {
     public void order_5_different_books_subtotals_should_be_375(){
         //arrange
         ShoppingCart target = new ShoppingCart();
-        Book harryPotter1 = getHarryPotter1();
-        Book harryPotter2 = getHarryPotter2();
-        Book harryPotter3 = getHarryPotter3();
-        Book harryPotter4 = getHarryPotter4();
-        Book harryPotter5 = getHarryPotter5();
         int expectSubtotal = 375;
 
         //act
-        target.order(harryPotter1);
-        target.order(harryPotter2);
-        target.order(harryPotter3);
-        target.order(harryPotter4);
-        target.order(harryPotter5);
+        target.order(getHarryPotter1());
+        target.order(getHarryPotter2());
+        target.order(getHarryPotter3());
+        target.order(getHarryPotter4());
+        target.order(getHarryPotter5());
+
+        //assert
+        Assert.assertEquals(expectSubtotal, target.getSubtotal());
+    }
+
+    @Test
+    public void order_4_books_subtotals_should_be_370(){
+        //arrange
+        ShoppingCart target = new ShoppingCart();
+        int expectSubtotal = 375;
+
+        //act
+        target.order(getHarryPotter1());
+        target.order(getHarryPotter2());
+        target.order(getHarryPotter3());
+        target.order(getHarryPotter3());
 
         //assert
         Assert.assertEquals(expectSubtotal, target.getSubtotal());
