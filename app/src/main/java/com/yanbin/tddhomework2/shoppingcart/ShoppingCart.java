@@ -13,6 +13,7 @@ public class ShoppingCart {
     private static final int BOOK_PRICE = 100;
 
     private static final int DISCOUNT_TWO_BOOKS = 95;
+    private static final int DISCOUNT_THREE_BOOKS = 90;
 
     private Map<Book, Integer> bookBuckets = new HashMap<>();
     private int totalBookCount = 0;
@@ -29,9 +30,11 @@ public class ShoppingCart {
     public int getSubtotal(){
         int bookBucketCount = bookBuckets.size();
 
+        if(bookBucketCount > 2)
+            return totalBookCount * DISCOUNT_THREE_BOOKS;
         if(bookBucketCount > 1)
             return totalBookCount * DISCOUNT_TWO_BOOKS;
-        else    
+        else
             return totalBookCount * BOOK_PRICE;
     }
 }
