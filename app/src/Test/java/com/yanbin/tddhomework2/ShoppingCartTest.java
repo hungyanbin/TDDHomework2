@@ -46,12 +46,34 @@ public class ShoppingCartTest {
         Assert.assertEquals(expectSubtotal, target.getSubtotal());
     }
 
+    @Test
+    public void order_3_different_books_subtotals_should_be_270(){
+        //arrange
+        ShoppingCart target = new ShoppingCart();
+        Book harryPotter1 = getHarryPotter1();
+        Book harryPotter2 = getHarryPotter2();
+        Book harryPotter3 = getHarryPotter3();
+        int expectSubtotal = 270;
+
+        //act
+        target.order(harryPotter1);
+        target.order(harryPotter2);
+        target.order(harryPotter3);
+
+        //assert
+        Assert.assertEquals(expectSubtotal, target.getSubtotal());
+    }
+
     private Book getHarryPotter1(){
         return new Book("Harry Potter and the Philosopher's Stone");
     }
 
     private Book getHarryPotter2(){
         return new Book("Harry Potter and the Chamber of Secrets");
+    }
+
+    private Book getHarryPotter3(){
+        return new Book("Harry Potter and the Prisoner of Azkaban");
     }
 
 }
