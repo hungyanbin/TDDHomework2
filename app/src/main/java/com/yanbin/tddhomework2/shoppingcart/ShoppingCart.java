@@ -1,22 +1,16 @@
 package com.yanbin.tddhomework2.shoppingcart;
 
-import java.util.ArrayList;
+import android.util.SparseArray;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-/**
- * Created by hungyanbin on 2015/10/25.
- */
 public class ShoppingCart {
-
-    private static final int BOOK_PRICE = 100;
-
-    private static final int DISCOUNT_TWO_BOOKS = 95;
-    private static final int DISCOUNT_THREE_BOOKS = 90;
 
     private Map<Book, Integer> bookBuckets = new HashMap<>();
     private int totalBookCount = 0;
+
+    private static final int BOOK_PRICE = 100;
 
     public void order(Book book){
         if(bookBuckets.containsKey(book)){
@@ -30,11 +24,15 @@ public class ShoppingCart {
     public int getSubtotal(){
         int bookBucketCount = bookBuckets.size();
 
-        if(bookBucketCount > 2)
-            return totalBookCount * DISCOUNT_THREE_BOOKS;
-        if(bookBucketCount > 1)
-            return totalBookCount * DISCOUNT_TWO_BOOKS;
-        else
-            return totalBookCount * BOOK_PRICE;
+        return totalBookCount * (int)(BOOK_PRICE * getDiscountByBucketCount(bookBucketCount));
+    }
+
+    private float getDiscountByBucketCount(int bucketCount){
+        SparseArray<Float> priceTable = new SparseArray<>();
+        priceTable.append(1, 1f);
+        priceTable.append(2, 0.95f);
+        priceTable.append(3, 0.9f);
+
+        return priceTable.get(bucketCount);
     }
 }
