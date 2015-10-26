@@ -17,7 +17,7 @@ import org.robolectric.annotation.Config;
 public class ShoppingCartTest {
 
     @Test
-    public void order_1_book_subtotals_should_be_100(){
+    public void order_harryPotter_1_subtotals_should_be_100(){
         //arrange
         ShoppingCart target = new ShoppingCart();
         int expectSubtotal = 100;
@@ -30,7 +30,7 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void order_2_different_books_subtotals_should_be_190(){
+    public void order_harryPotter_1_2_subtotals_should_be_190(){
         //arrange
         ShoppingCart target = new ShoppingCart();
         int expectSubtotal = 190;
@@ -44,7 +44,7 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void order_3_different_books_subtotals_should_be_270(){
+    public void order_harryPotter_1_2_3_subtotals_should_be_270(){
         //arrange
         ShoppingCart target = new ShoppingCart();
         int expectSubtotal = 270;
@@ -59,7 +59,7 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void order_4_different_books_subtotals_should_be_320(){
+    public void order_harryPotter_1_2_3_4_subtotals_should_be_320(){
         //arrange
         ShoppingCart target = new ShoppingCart();
         int expectSubtotal = 320;
@@ -75,7 +75,7 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void order_5_different_books_subtotals_should_be_375(){
+    public void order_harryPotter_1_2_3_4_5_subtotals_should_be_375(){
         //arrange
         ShoppingCart target = new ShoppingCart();
         int expectSubtotal = 375;
@@ -92,10 +92,10 @@ public class ShoppingCartTest {
     }
 
     @Test
-    public void order_4_books_subtotals_should_be_370(){
+    public void order_harryPotter_1_2_3_3_subtotals_should_be_370(){
         //arrange
         ShoppingCart target = new ShoppingCart();
-        int expectSubtotal = 375;
+        int expectSubtotal = 370;
 
         //act
         target.order(getHarryPotter1());
