@@ -9,6 +9,7 @@ import java.util.Map;
 public class BookBucket {
 
     private Map<Book, Integer> bucketMap = new HashMap<>();
+    private int minBookCount = 0;
 
     public void putBook(Book book){
         if(bucketMap.containsKey(book)){
@@ -25,5 +26,9 @@ public class BookBucket {
                 return bucket.getValue();
         }
         return 0;
+    }
+
+    public int getMinBookCount() {
+        return minBookCount;
     }
 }

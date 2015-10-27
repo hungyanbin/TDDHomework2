@@ -30,5 +30,23 @@ public class BookBucketTest {
         //assert
         Assert.assertEquals(expectBookCount, target.getBookCount(BookFactory.harryPotter(1)));
     }
+
+    @Test
+    public void putBook_harryPotter_3_2_2_3_1_minBookCount_should_be_1(){
+        //arrange
+        BookBucket target = new BookBucket();
+        int expectMinBookCount = 1;
+
+        //act
+        target.putBook(BookFactory.harryPotter(3));
+        target.putBook(BookFactory.harryPotter(2));
+        target.putBook(BookFactory.harryPotter(2));
+        target.putBook(BookFactory.harryPotter(3));
+        target.putBook(BookFactory.harryPotter(1));
+
+        //assert
+        Assert.assertEquals(expectMinBookCount, target.getMinBookCount());
+    }
+
 }
 
