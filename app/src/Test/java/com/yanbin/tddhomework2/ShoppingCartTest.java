@@ -1,6 +1,7 @@
 package com.yanbin.tddhomework2;
 
 import com.yanbin.tddhomework2.shoppingcart.Book;
+import com.yanbin.tddhomework2.shoppingcart.BookFactory;
 import com.yanbin.tddhomework2.shoppingcart.ShoppingCart;
 
 import org.junit.Assert;
@@ -23,7 +24,7 @@ public class ShoppingCartTest {
         int expectSubtotal = 100;
 
         //act
-        target.order(getHarryPotter1());
+        target.order(BookFactory.harryPotter(1));
 
         //assert
         Assert.assertEquals(expectSubtotal, target.getSubtotal());
@@ -36,8 +37,8 @@ public class ShoppingCartTest {
         int expectSubtotal = 190;
 
         //act
-        target.order(getHarryPotter1());
-        target.order(getHarryPotter2());
+        target.order(BookFactory.harryPotter(1));
+        target.order(BookFactory.harryPotter(2));
 
         //assert
         Assert.assertEquals(expectSubtotal, target.getSubtotal());
@@ -50,9 +51,9 @@ public class ShoppingCartTest {
         int expectSubtotal = 270;
 
         //act
-        target.order(getHarryPotter1());
-        target.order(getHarryPotter2());
-        target.order(getHarryPotter3());
+        target.order(BookFactory.harryPotter(1));
+        target.order(BookFactory.harryPotter(2));
+        target.order(BookFactory.harryPotter(3));
 
         //assert
         Assert.assertEquals(expectSubtotal, target.getSubtotal());
@@ -65,10 +66,10 @@ public class ShoppingCartTest {
         int expectSubtotal = 320;
 
         //act
-        target.order(getHarryPotter1());
-        target.order(getHarryPotter2());
-        target.order(getHarryPotter3());
-        target.order(getHarryPotter4());
+        target.order(BookFactory.harryPotter(1));
+        target.order(BookFactory.harryPotter(2));
+        target.order(BookFactory.harryPotter(3));
+        target.order(BookFactory.harryPotter(4));
 
         //assert
         Assert.assertEquals(expectSubtotal, target.getSubtotal());
@@ -81,11 +82,11 @@ public class ShoppingCartTest {
         int expectSubtotal = 375;
 
         //act
-        target.order(getHarryPotter1());
-        target.order(getHarryPotter2());
-        target.order(getHarryPotter3());
-        target.order(getHarryPotter4());
-        target.order(getHarryPotter5());
+        target.order(BookFactory.harryPotter(1));
+        target.order(BookFactory.harryPotter(2));
+        target.order(BookFactory.harryPotter(3));
+        target.order(BookFactory.harryPotter(4));
+        target.order(BookFactory.harryPotter(5));
 
         //assert
         Assert.assertEquals(expectSubtotal, target.getSubtotal());
@@ -98,33 +99,14 @@ public class ShoppingCartTest {
         int expectSubtotal = 370;
 
         //act
-        target.order(getHarryPotter1());
-        target.order(getHarryPotter2());
-        target.order(getHarryPotter3());
-        target.order(getHarryPotter3());
+        target.order(BookFactory.harryPotter(1));
+        target.order(BookFactory.harryPotter(2));
+        target.order(BookFactory.harryPotter(3));
+        target.order(BookFactory.harryPotter(3));
 
         //assert
         Assert.assertEquals(expectSubtotal, target.getSubtotal());
     }
 
-    private Book getHarryPotter1(){
-        return new Book("Harry Potter and the Philosopher's Stone", 100);
-    }
-
-    private Book getHarryPotter2(){
-        return new Book("Harry Potter and the Chamber of Secrets", 100);
-    }
-
-    private Book getHarryPotter3(){
-        return new Book("Harry Potter and the Prisoner of Azkaban", 100);
-    }
-
-    private Book getHarryPotter4(){
-        return new Book("Harry Potter and the Goblet of Fire", 100);
-    }
-
-    private Book getHarryPotter5(){
-        return new Book("Harry Potter and the Order of the Phoenix", 100);
-    }
 
 }
