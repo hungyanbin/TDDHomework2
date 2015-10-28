@@ -84,7 +84,22 @@ public class BookBucketTest {
 
         //assert
         Assert.assertEquals(expectBookSet, target.popBookSet());
+    }
 
+    @Test
+    public void popBookSet_bucketSize_should_change_from_2_to_1(){
+        BookBucket target = new BookBucket();
+        int expectOriginalSize = 2;
+        int expectBucketSizeAfterPop = 1;
+        target.putBook(BookFactory.harryPotter(2));
+        target.putBook(BookFactory.harryPotter(2));
+        target.putBook(BookFactory.harryPotter(1));
+
+        Assert.assertEquals(expectOriginalSize, target.getBucketSize());
+
+        target.popBookSet();
+
+        Assert.assertEquals(expectBucketSizeAfterPop, target.getBucketSize());
     }
 }
 
