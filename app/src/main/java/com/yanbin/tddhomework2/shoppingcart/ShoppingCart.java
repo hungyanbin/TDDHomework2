@@ -2,45 +2,29 @@ package com.yanbin.tddhomework2.shoppingcart;
 
 import android.util.SparseArray;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 public class ShoppingCart {
 
-    private Map<Book, Integer> bookBuckets = new HashMap<>();
+    private BookBucket bookBucket= new BookBucket();
 
     public void order(Book book){
-        if(bookBuckets.containsKey(book)){
-            int bookCount = bookBuckets.get(book);
-            bookBuckets.put(book, bookCount + 1);
-        }else
-            bookBuckets.put(book, 1);
+        bookBucket.putBook(book);
     }
 
     public int getSubtotal(){
         int subTotal = 0;
 
-        int nextBookSetCount = getNextBookSetCount();
-        while(nextBookSetCount != Integer.MAX_VALUE){
-            float discount = getDiscountByBucketCount(bookBuckets.size());
+        int nextBookSetCount = bookBucket.getMinBookCount();
+        while(nextBookSetCount != 0){
+            float discount = getDiscountByBucketCount(bookBucket.getBucketSize());
             int bookSetPrice = getBookSetPrice(nextBookSetCount);
 
             subTotal +=  bookSetPrice * discount;
-            nextBookSetCount = getNextBookSetCount();
+            nextBookSetCount = bookBucket.getMinBookCount();
         }
 
         return subTotal;
-    }
-
-    private int getNextBookSetCount(){
-        int minBookCount = Integer.MAX_VALUE;
-        for(Integer bookCount:bookBuckets.values()){
-            if(bookCount < minBookCount)
-                minBookCount = bookCount;
-        }
-        return minBookCount;
     }
 
     private float getDiscountByBucketCount(int bucketCount){
@@ -56,23 +40,11 @@ public class ShoppingCart {
 
     private int getBookSetPrice(int bookCount){
         int sum = 0;
-        List<Book> emptyBooks = new ArrayList<>();
-        for(Map.Entry<Book, Integer> bookBucket : bookBuckets.entrySet()){
-            Book book = bookBucket.getKey();
-            int count = bookBucket.getValue();
-
+        Set<Book> bookSet = bookBucket.popBookSet(bookCount);
+        for(Book book: bookSet){
             int bookPrice = book.getPrice();
-            int restCount = count - bookCount;
-            //do not calculate empty bucket
-            if(restCount == 0)
-                emptyBooks.add(book);
-
-            bookBuckets.put(book, restCount);
             sum += bookPrice * bookCount;
         }
-
-        for(int i=0;i<emptyBooks.size();i++)
-            bookBuckets.remove(emptyBooks.get(i));
 
         return sum;
     }
