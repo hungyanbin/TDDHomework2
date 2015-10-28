@@ -41,7 +41,7 @@ public class BookBucket {
         return minBookCount;
     }
 
-    public int getMaxBookSetSize(){
-        return 0;
+    public int getBucketSize(){
+        return bucketMap.size();
     }
 }

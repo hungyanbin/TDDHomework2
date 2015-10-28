@@ -49,7 +49,7 @@ public class BookBucketTest {
     }
 
     @Test
-    public void putBook_harryPotter_3_2_1_3_maxBookSetSize_should_be_3(){
+    public void putBook_harryPotter_3_2_1_3_maxBucketSize_should_be_3(){
         //arrange
         BookBucket target = new BookBucket();
         int expectMaxBookSetSize = 3;
@@ -61,7 +61,7 @@ public class BookBucketTest {
         target.putBook(BookFactory.harryPotter(3));
 
         //assert
-        Assert.assertEquals(expectMaxBookSetSize, target.getMaxBookSetSize());
+        Assert.assertEquals(expectMaxBookSetSize, target.getBucketSize());
     }
 
 }
