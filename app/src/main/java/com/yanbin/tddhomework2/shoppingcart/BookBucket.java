@@ -9,14 +9,14 @@ import java.util.Map;
 public class BookBucket {
 
     private Map<Book, Integer> bucketMap = new HashMap<>();
-    private int minBookCount = 0;
 
     public void putBook(Book book){
         if(bucketMap.containsKey(book)){
             int bookCount = bucketMap.get(book);
             bucketMap.put(book, bookCount + 1);
-        }else
+        }else {
             bucketMap.put(book, 1);
+        }
     }
 
     public int getBookCount(Book book){
@@ -29,6 +29,15 @@ public class BookBucket {
     }
 
     public int getMinBookCount() {
+        int minBookCount = Integer.MAX_VALUE;
+        for(Integer bookCount : bucketMap.values()){
+            if(bookCount < minBookCount)
+                minBookCount = bookCount;
+        }
+
+        if(minBookCount == Integer.MAX_VALUE)
+            return 0;
+
         return minBookCount;
     }
 }
