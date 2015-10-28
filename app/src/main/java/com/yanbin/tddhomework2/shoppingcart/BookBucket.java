@@ -40,4 +40,8 @@ public class BookBucket {
 
         return minBookCount;
     }
+
+    public int getMaxBookSetSize(){
+        return 0;
+    }
 }
