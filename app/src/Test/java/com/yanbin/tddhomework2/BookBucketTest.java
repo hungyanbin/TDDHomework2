@@ -81,9 +81,10 @@ public class BookBucketTest {
         target.putBook(BookFactory.harryPotter(2));
         target.putBook(BookFactory.harryPotter(2));
         target.putBook(BookFactory.harryPotter(1));
+        Set<Book> actualBookSet = target.popBookSet(1);
 
         //assert
-        Assert.assertEquals(expectBookSet, target.popBookSet());
+        Assert.assertEquals(expectBookSet, actualBookSet);
     }
 
     @Test
@@ -97,7 +98,7 @@ public class BookBucketTest {
 
         Assert.assertEquals(expectOriginalSize, target.getBucketSize());
 
-        target.popBookSet();
+        target.popBookSet(1);
 
         Assert.assertEquals(expectBucketSizeAfterPop, target.getBucketSize());
     }

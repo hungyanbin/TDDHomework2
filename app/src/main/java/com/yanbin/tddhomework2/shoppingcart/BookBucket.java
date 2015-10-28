@@ -21,12 +21,12 @@ public class BookBucket {
         }
     }
 
-    public Set<Book> popBookSet(){
+    public Set<Book> popBookSet(int popSize){
         Set<Book> bookSet = new HashSet<>();
         Set<Book> emptyBucket = new HashSet<>();
         for (Map.Entry<Book, Integer> bucket : bucketMap.entrySet()){
             Book book = bucket.getKey();
-            int countAfterPop = bucket.getValue() - 1;
+            int countAfterPop = bucket.getValue() - popSize;
             bookSet.add(book);
 
             bucketMap.put(book, countAfterPop);
