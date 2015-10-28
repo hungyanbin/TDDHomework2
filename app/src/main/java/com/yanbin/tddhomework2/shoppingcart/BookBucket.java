@@ -22,7 +22,11 @@ public class BookBucket {
     }
 
     public Set<Book> popBookSet(){
-        return null;
+        Set<Book> bookSet = new HashSet<>();
+        for (Book book:bucketMap.keySet()){
+            bookSet.add(book);
+        }
+        return bookSet;
     }
 
     public int getBookCount(Book book){
