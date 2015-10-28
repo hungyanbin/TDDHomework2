@@ -102,5 +102,16 @@ public class BookBucketTest {
 
         Assert.assertEquals(expectBucketSizeAfterPop, target.getBucketSize());
     }
+
+    @Test(expected=IndexOutOfBoundsException.class)
+    public void over_popBookSet_should_catch_IndexOutOfBoundsException(){
+        BookBucket target = new BookBucket();
+        target.putBook(BookFactory.harryPotter(3));
+        target.putBook(BookFactory.harryPotter(3));
+        target.putBook(BookFactory.harryPotter(2));
+        target.putBook(BookFactory.harryPotter(1));
+
+        target.popBookSet(1);
+    }
 }
 
