@@ -1,7 +1,9 @@
 package com.yanbin.tddhomework2.shoppingcart;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by hungyanbin on 2015/10/27.
@@ -17,6 +19,10 @@ public class BookBucket {
         }else {
             bucketMap.put(book, 1);
         }
+    }
+
+    public Set<Book> popBookSet(){
+        return null;
     }
 
     public int getBookCount(Book book){

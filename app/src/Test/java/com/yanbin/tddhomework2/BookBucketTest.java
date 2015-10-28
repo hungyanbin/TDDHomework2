@@ -1,13 +1,18 @@
 package com.yanbin.tddhomework2;
 
+import com.yanbin.tddhomework2.shoppingcart.Book;
 import com.yanbin.tddhomework2.shoppingcart.BookBucket;
 import com.yanbin.tddhomework2.shoppingcart.BookFactory;
+
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by hungyanbin on 2015/10/27.
@@ -49,10 +54,10 @@ public class BookBucketTest {
     }
 
     @Test
-    public void putBook_harryPotter_3_2_1_3_maxBucketSize_should_be_3(){
+    public void putBook_harryPotter_3_2_1_3_bucketSize_should_be_3(){
         //arrange
         BookBucket target = new BookBucket();
-        int expectMaxBookSetSize = 3;
+        int expectBucketSize = 3;
 
         //act
         target.putBook(BookFactory.harryPotter(3));
@@ -61,8 +66,25 @@ public class BookBucketTest {
         target.putBook(BookFactory.harryPotter(3));
 
         //assert
-        Assert.assertEquals(expectMaxBookSetSize, target.getBucketSize());
+        Assert.assertEquals(expectBucketSize, target.getBucketSize());
     }
 
+    @Test
+    public void putBook_harryPotter_2_2_1_popBookSet_should_have_harryPotter_1_2(){
+        //arrange
+        BookBucket target = new BookBucket();
+        Set<Book> expectBookSet = new HashSet<>();
+        expectBookSet.add(BookFactory.harryPotter(1));
+        expectBookSet.add(BookFactory.harryPotter(2));
+
+        //act
+        target.putBook(BookFactory.harryPotter(2));
+        target.putBook(BookFactory.harryPotter(2));
+        target.putBook(BookFactory.harryPotter(1));
+
+        //assert
+        Assert.assertEquals(expectBookSet, target.popBookSet());
+
+    }
 }
 
