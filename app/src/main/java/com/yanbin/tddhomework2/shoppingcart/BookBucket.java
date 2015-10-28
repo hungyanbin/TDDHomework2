@@ -23,10 +23,26 @@ public class BookBucket {
 
     public Set<Book> popBookSet(){
         Set<Book> bookSet = new HashSet<>();
-        for (Book book:bucketMap.keySet()){
+        Set<Book> emptyBucket = new HashSet<>();
+        for (Map.Entry<Book, Integer> bucket : bucketMap.entrySet()){
+            Book book = bucket.getKey();
+            int countAfterPop = bucket.getValue() - 1;
             bookSet.add(book);
+
+            bucketMap.put(book, countAfterPop);
+            if(countAfterPop == 0)
+                emptyBucket.add(book);
         }
+
+        removeEmptyBucket(emptyBucket);
+
         return bookSet;
+    }
+
+    private void removeEmptyBucket(Set<Book> emptyBucket){
+        for(Book book:emptyBucket){
+            bucketMap.remove(book);
+        }
     }
 
     public int getBookCount(Book book){
