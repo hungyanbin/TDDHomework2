@@ -108,5 +108,22 @@ public class ShoppingCartTest {
         Assert.assertEquals(expectSubtotal, target.getSubtotal());
     }
 
+    @Test
+    public void order_harryPotter_1_2_2_3_3_subtotals_should_be_460(){
+        //arrange
+        ShoppingCart target = new ShoppingCart();
+        int expectSubtotal = 460;
+
+        //act
+        target.order(BookFactory.harryPotter(1));
+        target.order(BookFactory.harryPotter(2));
+        target.order(BookFactory.harryPotter(2));
+        target.order(BookFactory.harryPotter(3));
+        target.order(BookFactory.harryPotter(3));
+
+        //assert
+        Assert.assertEquals(expectSubtotal, target.getSubtotal());
+    }
+
 
 }
