@@ -32,6 +32,8 @@ public class BookBucket {
             bucketMap.put(book, countAfterPop);
             if(countAfterPop == 0)
                 emptyBucket.add(book);
+            else if(countAfterPop < 0)
+                throw new IndexOutOfBoundsException("popSize is too large : " + popSize + ",  you should call getMinBookCount() first to check size." );
         }
 
         removeEmptyBucket(emptyBucket);
